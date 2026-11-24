@@ -1,0 +1,16 @@
+Column,Data_Type,Missing_Values,Unique_Values
+id,int64,0,1347681
+issue_d,str,0,139
+revenue,float64,0,65608
+dti_n,float64,0,7068
+loan_amnt,int64,0,1560
+fico_n,float64,0,48
+experience_c,int64,0,2
+emp_length,str,0,12
+purpose,str,0,14
+home_ownership_n,str,0,4
+addr_state,str,0,51
+zip_code,str,1,945
+Default,int64,0,2
+title,str,16657,61451
+desc,str,1228582,109539

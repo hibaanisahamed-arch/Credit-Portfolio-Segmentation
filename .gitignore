@@ -1,0 +1,21 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.vscode/
+.env
+.streamlit/secrets.toml
+# Dataset files
+data/raw/
+data/processed/
+
+# Virtual environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
