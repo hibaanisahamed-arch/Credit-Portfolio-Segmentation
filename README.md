@@ -1,60 +1,307 @@
-# Credit Portfolio Segmentation
 
-## Project Overview
+Credit Portfolio Segmentation and Risk Pattern Analysis
 
-Credit Portfolio Segmentation is a Machine Learning project that aims to segment borrowers into different groups based on their credit and financial characteristics.
+Project Overview
 
-The project helps understand borrower patterns and supports better credit portfolio analysis and decision-making.
+This project focuses on analyzing borrower characteristics and identifying meaningful segments in a credit portfolio using unsupervised machine learning techniques.
 
-## Objectives
+The objective is to discover borrower groups based on financial, credit and loan-related characteristics and examine historical patterns across the resulting clusters.
 
-- Analyze borrower and loan-related data.
-- Perform data cleaning and preprocessing.
-- Identify meaningful borrower segments.
-- Understand patterns and characteristics within the credit portfolio.
-- Present insights through an interactive Streamlit dashboard.
+The project also includes dimensionality reduction, clustering algorithm comparison and an interactive Streamlit dashboard.
 
-## Technologies Used
+Project Objectives
 
-- Python
-- Pandas
-- NumPy
-- Matplotlib
-- Seaborn
-- Scikit-learn
-- Streamlit
-- Jupyter Notebook
+Understand and explore a large loan-granting dataset.
 
-## Project Structure
+Perform data cleaning and preprocessing.
 
-```text
-Credit_Portfolio_Segmentation/
+Identify meaningful borrower segments using clustering.
+
+Compare K-Means, Hierarchical Clustering and DBSCAN.
+
+Apply dimensionality reduction techniques for visualization.
+
+Analyze historical Default label distributions after clustering.
+
+Build an interactive Streamlit dashboard.
+
+Dataset Description
+
+The dataset contains approximately 1.35 million loan records and includes features such as:
+
+Revenue
+
+Debt-to-income ratio (DTI)
+
+Loan amount
+
+FICO score
+
+Employment length
+
+Loan purpose
+
+Home ownership
+
+Important: The Default column was excluded from clustering features. It was used only after clustering to examine historical label distributions.
+
+Borrower-level datasets are not included in this public repository because of data privacy considerations.
+
+Project Workflow
+
+1. Data Understanding and Quality Assessment
+
+Dataset dimensions and data types
+
+Missing-value analysis
+
+Duplicate checks
+
+Distribution and unusual-value investigation
+
+2. Data Cleaning
+
+Investigated unusual DTI values.
+
+Provisionally replaced DTI values of 999 with missing values.
+
+Prepared the dataset for analysis.
+
+3. Exploratory Data Analysis
+
+Revenue distribution
+
+Loan amount distribution
+
+FICO score distribution
+
+DTI distribution
+
+Loan purpose and home ownership analysis
+
+4. Feature Selection and Preprocessing
+
+Selected clustering features:
+
+revenue
+
+dti_n
+
+loan_amnt
+
+fico_n
+
+emp_length
+
+purpose
+
+home_ownership_n
+
+Preprocessing included:
+
+Missing-value imputation
+
+Log transformation of revenue
+
+Robust scaling of numerical features
+
+One-hot encoding of categorical features
+
+5. Clustering Algorithms
+
+Three algorithms were evaluated:
+
+K-Means
+
+Tested different cluster counts.
+
+Compared silhouette scores.
+
+Selected three clusters for final segmentation and interpretability.
+
+Hierarchical Clustering
+
+Evaluated using sampled observations.
+
+Compared its clustering performance with K-Means.
+
+DBSCAN
+
+Experimented with different epsilon and minimum-sample settings.
+
+Evaluated cluster formation and noise percentages.
+
+6. Dimensionality Reduction
+
+The following techniques were explored:
+
+TruncatedSVD – dimensionality reduction for the sparse preprocessed feature matrix.
+
+t-SNE – visualization of local cluster structures.
+
+UMAP – visualization of cluster patterns in lower-dimensional space.
+
+7. Final Cluster Analysis
+
+The final K-Means model was fitted using three clusters.
+
+Cluster profiles were examined using:
+
+Revenue
+
+DTI
+
+Loan amount
+
+FICO score
+
+Employment length
+
+Loan purpose
+
+Home ownership
+
+Historical Default label distributions were analyzed separately after clustering.
+
+8. Interactive Dashboard
+
+A Streamlit dashboard was developed to explore:
+
+Cluster distribution
+
+Financial characteristics
+
+Cluster profiles
+
+Historical label distributions
+
+Interactive visualizations
+
+Borrower-level previews using locally available data
+
+Key Findings
+
+The final K-Means model identified three borrower segments with distinct financial characteristics.
+
+Cluster
+
+Median Revenue
+
+Median Loan Amount
+
+Median FICO
+
+Cluster 0
+
+50,000
+
+9,000
+
+682
+
+Cluster 1
+
+70,000
+
+12,000
+
+747
+
+Cluster 2
+
+98,000
+
+21,000
+
+692
+
+Additional observations:
+
+Cluster 0 has a relatively lower median revenue and loan amount.
+
+Cluster 1 has the highest median FICO score.
+
+Cluster 2 has the highest median revenue and loan amount.
+
+Debt consolidation is a prominent loan purpose across all three clusters.
+
+These clusters represent patterns in the dataset and should not be interpreted as validated credit-risk grades.
+
+Technologies Used
+
+Python
+
+Pandas
+
+NumPy
+
+Scikit-learn
+
+SciPy
+
+Matplotlib
+
+Seaborn
+
+Plotly
+
+Streamlit
+
+TruncatedSVD
+
+t-SNE
+
+UMAP
+
+Git and GitHub
+
+Project Structure
+
+Credit-Portfolio-Segmentation/
 │
-├── app.py
+├── dashboard/
+│   └── app.py
+│
 ├── data/
 │   ├── raw/
 │   └── processed/
-├── notebooks/
-├── src/
+│
 ├── models/
+│
 ├── outputs/
-├── requirements.txt
-└── README.md
-```
+│   ├── plots/
+│   └── reports/
+│
+├── src/
+│   ├── 01_data_understanding.py
+│   ├── 02_data_quality_checks.py
+│   ├── ...
+│   └── 26_project_output_verification.py
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
 
-## Project Workflow
+Limitations and Future Improvements
 
-1. Data Collection
-2. Data Cleaning
-3. Exploratory Data Analysis (EDA)
-4. Data Preprocessing
-5. Feature Selection
-6. Machine Learning
-7. Credit Portfolio Segmentation
-8. Streamlit Dashboard Development
+The semantic definition of the Default label has not been independently verified.
 
-## Interactive Dashboard
+DTI values of 999 were provisionally treated as missing; their original meaning requires further investigation.
 
-The project includes a Streamlit dashboard to visualize and explore credit portfolio segmentation results.
+Hierarchical Clustering, DBSCAN and dimensionality-reduction experiments used samples where computationally appropriate.
 
+Cluster assignments depend on feature selection and preprocessing decisions.
 
+Clusters are exploratory segments, not approved lending or credit-risk decisions.
+
+Future improvements:
+
+Validate the meaning of the target label.
+
+Evaluate cluster stability.
+
+Investigate additional clustering methods.
+
+Improve dashboard deployment.
+
+Add model explainability and further segment comparisons
